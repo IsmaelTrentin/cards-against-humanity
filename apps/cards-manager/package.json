@@ -1,0 +1,38 @@
+{
+  "name": "cards-manager",
+  "private": true,
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@mantine/core": "^5.3.3",
+    "@mantine/form": "^5.3.3",
+    "@mantine/hooks": "^5.3.3",
+    "@mantine/modals": "^5.3.3",
+    "@mantine/notifications": "^5.3.3",
+    "@types/node": "^18.7.18",
+    "axios": "^1.1.3",
+    "classnames": "^2.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.4.0",
+    "react-query": "^3.39.2",
+    "tabler-icons-react": "^1.55.0",
+    "wouter": "^2.8.0-alpha.2",
+    "zod": "^3.19.1",
+    "ui": "*"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^2.1.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0",
+    "tsconfig": "*",
+    "shared-types": "*"
+  }
+}

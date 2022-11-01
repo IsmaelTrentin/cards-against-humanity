@@ -11,7 +11,7 @@ const app = express();
 const { BASE_URL } = process.env;
 
 if (BASE_URL == undefined) {
-  logger.error('Base url not provided');
+  logger.error('Base url not provided', { at: 'app' });
   process.exit(1);
 }
 

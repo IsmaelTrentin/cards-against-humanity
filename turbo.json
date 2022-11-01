@@ -2,6 +2,18 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
+      "env": [
+        "PORT",
+        "BASE_URL",
+        "DB_URL",
+        "DB_NAME",
+        "DB_USER",
+        "DB_PWD",
+        "DB_URL_TEST",
+        "DB_NAME_TEST",
+        "DB_USER_TEST",
+        "DB_PWD_TEST"
+      ],
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
@@ -13,7 +25,6 @@
     }
   },
   "globalEnv": [
-    "NODE_ENV",
     "PORT",
     "BASE_URL",
     "DB_URL",
