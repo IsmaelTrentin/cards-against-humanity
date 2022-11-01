@@ -1,3 +1,3 @@
 # Cards Against Humanity REST API
 
-REST part of project. Handles cards and game rooms
+NodeJS REST API for managing cards, card submissions and lobbies.
