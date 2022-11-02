@@ -1,5 +1,7 @@
-import { ApiResponse, AbstractCard } from 'shared-types';
+import { AbstractCard, ApiResponse } from 'shared-types';
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query';
+
+import { Axios } from '@/services/axios';
 
 type GetAllCardsResponse = ApiResponse & {
   data: AbstractCard[];
@@ -21,12 +23,11 @@ const fetchCards = async (ctx: QueryFunctionContext<any>) => {
   queryKey[1] && qParams.append('text', queryKey[1]);
 
   // fire request
-  const res = await window.fetch(
-    `http://localhost:2424/cah-api-rest/v1/cards?${qParams.toString()}`
+  const { data } = await Axios.get<GetAllCardsResponse>(
+    `/cards?${qParams.toString()}`
   );
-
   // return results
-  return (await res.json()) as GetAllCardsResponse;
+  return data;
 };
 
 const useInfiniteCards = (text?: string, type?: number) =>
