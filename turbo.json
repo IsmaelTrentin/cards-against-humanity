@@ -2,18 +2,14 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "env": [
-        "PORT",
-        "BASE_URL",
-        "DB_URL",
-        "DB_NAME",
-        "DB_USER",
-        "DB_PWD",
-        "DB_URL_TEST",
-        "DB_NAME_TEST",
-        "DB_USER_TEST",
-        "DB_PWD_TEST"
-      ],
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "rest-api#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
+    "cards-manager#build": {
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
@@ -24,16 +20,5 @@
       "cache": false
     }
   },
-  "globalEnv": [
-    "PORT",
-    "BASE_URL",
-    "DB_URL",
-    "DB_NAME",
-    "DB_USER",
-    "DB_PWD",
-    "DB_URL_TEST",
-    "DB_NAME_TEST",
-    "DB_USER_TEST",
-    "DB_PWD_TEST"
-  ]
+  "globalEnv": ["NODE_ENV", "PORT", "BASE_URL", "DB_URL", "DB_PWD"]
 }
