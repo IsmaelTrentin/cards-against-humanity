@@ -6,6 +6,7 @@ import logger from '@note-dev-org/service-logger';
 
 // Listen port.
 const port = process.env.PORT || 2424;
+
 // Function for creating a server,
 // needs an Express app.
 const createServer = (app: Express) => {

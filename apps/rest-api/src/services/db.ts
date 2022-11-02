@@ -3,10 +3,7 @@ import logger from '@note-dev-org/service-logger';
 import mongoose from 'mongoose';
 
 export const connect = async () => {
-  let url =
-    process.env.NODE_ENV !== 'production'
-      ? process.env.DB_URL_TEST
-      : process.env.DB_URL;
+  let url = process.env.DB_URL;
   if (!url) {
     const err = buildError('No db url provided in .env', 500);
     throw err;
