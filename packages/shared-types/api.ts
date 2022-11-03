@@ -14,3 +14,9 @@ export interface ApiResponseError extends Timestampable {
   message: string;
   error?: ObjectLiteral;
 }
+
+export interface PagedResponse<T> extends ApiResponse {
+  data: T[];
+  nextPage: number;
+  previousPage: number;
+}
