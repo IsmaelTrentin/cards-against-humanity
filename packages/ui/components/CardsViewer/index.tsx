@@ -1,28 +1,18 @@
+import { AbstractCard, PagedResponse } from 'shared-types';
 import { Box, Loader } from '@mantine/core';
 import React, { useEffect } from 'react';
 
-import { BrowserCardTypeFilters } from '@/views/BrowseView';
 import { Card } from 'ui';
+import { UseInfiniteQueryResult } from 'react-query';
 import { useInView } from 'react-intersection-observer';
-import useInfiniteCards from '@/hooks/useInfiniteCards';
 import { useStyles } from './styles';
 
 interface Props {
-  filters?: BrowserCardTypeFilters;
-  queryText?: string;
+  query: UseInfiniteQueryResult<PagedResponse<AbstractCard>, unknown>;
 }
 
 export const CardsViewer: React.FC<Props> = props => {
-  const { filters, queryText } = props;
-  const { ref, inView } = useInView();
-  const cardType =
-    filters == undefined
-      ? 2
-      : filters.showBlack && filters.showWhite
-      ? 2
-      : filters.showBlack && !filters.showWhite
-      ? 0
-      : 1;
+  const { query } = props;
   const {
     data,
     isLoading,
@@ -30,11 +20,11 @@ export const CardsViewer: React.FC<Props> = props => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteCards(queryText, cardType);
+  } = query;
+  const { ref, inView } = useInView();
   const { classes } = useStyles();
 
   useEffect(() => {
-    console.log(inView);
     if (!inView || !hasNextPage) return;
     fetchNextPage();
   }, [fetchNextPage, hasNextPage, inView]);
