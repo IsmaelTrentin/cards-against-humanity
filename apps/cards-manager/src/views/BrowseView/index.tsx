@@ -1,33 +1,39 @@
 import { Badge, Text, TextInput, useMantineTheme } from '@mantine/core';
 import React, { useState } from 'react';
 
-import { CardsViewer } from '@/components/CardsViewer';
+import { BrowserCardFilters } from 'shared-types';
+import { CardsViewer } from 'ui';
 import { Panel } from 'ui';
 import { Search } from 'tabler-icons-react';
 import { View } from '@/components/View';
 import { useDebouncedState } from '@mantine/hooks';
+import { useInfiniteCards } from '@/hooks/useInfiniteCards';
 import useStyles from './styles';
-
-export interface BrowserCardTypeFilters {
-  showBlack: boolean;
-  showWhite: boolean;
-}
 
 interface Props {}
 
 export const BrowseView: React.FC<Props> = () => {
-  const [activeFilters, setActiveFilters] = useState<BrowserCardTypeFilters>({
+  const theme = useMantineTheme();
+  const { classes } = useStyles();
+  const [activeFilters, setActiveFilters] = useState<BrowserCardFilters>({
     showBlack: true,
     showWhite: true,
   });
-  const [query, setQuery] = useDebouncedState<string | undefined>(
+  const [queryText, setQuery] = useDebouncedState<string | undefined>(
     undefined,
     300
   );
-  const theme = useMantineTheme();
-  const { classes } = useStyles();
+  const cardType =
+    activeFilters == undefined
+      ? 2
+      : activeFilters.showBlack && activeFilters.showWhite
+      ? 2
+      : activeFilters.showBlack && !activeFilters.showWhite
+      ? 0
+      : 1;
+  const cardsQuery = useInfiniteCards(queryText, cardType);
 
-  const toggleFilter = (name: keyof BrowserCardTypeFilters) => {
+  const toggleFilter = (name: keyof BrowserCardFilters) => {
     setActiveFilters(ps => {
       const cache = {
         ...ps,
@@ -84,10 +90,7 @@ export const BrowseView: React.FC<Props> = () => {
           </Badge>
         </div>
       </Panel>
-      <CardsViewer
-        filters={activeFilters}
-        queryText={query}
-      />
+      <CardsViewer query={cardsQuery} />
     </View>
   );
 };
