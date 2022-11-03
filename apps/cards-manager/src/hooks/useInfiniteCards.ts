@@ -1,15 +1,12 @@
-import { AbstractCard, ApiResponse } from 'shared-types';
+import { AbstractCard, PagedResponse } from 'shared-types';
 import { QueryFunctionContext, useInfiniteQuery } from 'react-query';
 
 import { Axios } from '@/services/axios';
 
-type GetAllCardsResponse = ApiResponse & {
-  data: AbstractCard[];
-  nextPage: number;
-  previousPage: number;
-};
+type GetAllCardsResponse = PagedResponse<AbstractCard>;
 
 const limit = 18;
+
 // workaround
 const fetchCards = async (ctx: QueryFunctionContext<any>) => {
   // get context vars
@@ -26,13 +23,11 @@ const fetchCards = async (ctx: QueryFunctionContext<any>) => {
   const { data } = await Axios.get<GetAllCardsResponse>(
     `/cards?${qParams.toString()}`
   );
-  // return results
+
   return data;
 };
 
-const useInfiniteCards = (text?: string, type?: number) =>
+export const useInfiniteCards = (text?: string, type?: number) =>
   useInfiniteQuery(['cards', text, type], fetchCards, {
     getNextPageParam: lastPage => lastPage.nextPage,
   });
-
-export default useInfiniteCards;

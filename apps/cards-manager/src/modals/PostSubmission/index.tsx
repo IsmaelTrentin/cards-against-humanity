@@ -62,11 +62,11 @@ export const PostSubmissionModal: React.FC<Props> = props => {
     if (result !== isValid) {
       setIsValid(result);
     }
-  }, [values]);
+  }, [isValid, values]);
 
   React.useEffect(() => {
     isSuccess && onClose();
-  }, [isSuccess]);
+  }, [isSuccess, onClose]);
 
   return (
     <Modal
