@@ -1,5 +1,13 @@
-import axios from 'axios';
+import { Axios as HttpClient } from 'http-client';
 
-export const Axios = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+type ImportMeta_Workaround = {
+  env: {
+    VITE_API_URL: string;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+};
+
+export const Axios = HttpClient({
+  baseURL: (import.meta as unknown as ImportMeta_Workaround).env.VITE_API_URL,
 });
