@@ -3,7 +3,7 @@ import { Copyright } from '@/components/Copyright';
 import { CreateCardButton } from '@/components/CreateCardButton';
 import React from 'react';
 import { Transition } from '@mantine/core';
-import { useMountedTransition } from '@/hooks/useMountedTransition';
+import { useMountedTransition } from 'ui';
 import useStyles from './styles';
 
 interface Props {}

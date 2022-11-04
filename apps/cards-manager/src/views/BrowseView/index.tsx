@@ -5,7 +5,7 @@ import { BrowserCardFilters } from 'shared-types';
 import { CardsViewer } from 'ui';
 import { Panel } from 'ui';
 import { Search } from 'tabler-icons-react';
-import { View } from '@/components/View';
+import { View } from 'ui';
 import { useDebouncedState } from '@mantine/hooks';
 import { useInfiniteCards } from '@/hooks/useInfiniteCards';
 import useStyles from './styles';
