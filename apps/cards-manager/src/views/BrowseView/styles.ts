@@ -1,7 +1,7 @@
-import { noSelect } from '@/utils/css.classes';
 import { createStyles } from '@mantine/core';
+import { noSelect } from 'ui';
 
-const styles = createStyles(() => ({
+const styles = createStyles((theme, _, getRef) => ({
   'filters-wrapper': {
     ...noSelect,
     display: 'flex',
@@ -12,6 +12,36 @@ const styles = createStyles(() => ({
     '& > div': {
       cursor: 'pointer',
     },
+  },
+  'go-back-wrapper': {
+    ...noSelect,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: '40vh',
+    bottom: '40vh',
+    left: 0,
+    width: '2.5rem',
+    [`&:hover .${getRef('goBack')}`]: {
+      left: '1rem',
+      opacity: 1,
+    },
+  },
+  'go-back': {
+    ref: getRef('goBack'),
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    width: 42,
+    height: 42,
+    left: -21,
+    opacity: 0.4,
+    borderRadius: '50%',
+    boxShadow: `0 0 10px 0 ${theme.colors.gray[4]}`,
+    cursor: 'pointer',
+    transition: 'all 200ms ease',
   },
 }));
 

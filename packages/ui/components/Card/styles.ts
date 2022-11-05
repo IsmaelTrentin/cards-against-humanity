@@ -13,10 +13,13 @@ export const useStyles = createStyles(theme => ({
     boxShadow: `0 5px 18px 0 ${theme.colors.gray[2]}`,
     cursor: 'pointer',
     transition: '100ms ease',
-    '&:hover': {
+
+    overflow: 'hidden',
+  },
+  'with-animation': {
+    '&:hover, &:focus, &:focus-within': {
       transform: 'scale(1.02)',
     },
-    overflow: 'hidden',
   },
   id: {
     position: 'absolute',

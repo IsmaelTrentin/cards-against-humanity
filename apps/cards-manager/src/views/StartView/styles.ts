@@ -1,7 +1,7 @@
-import { noSelect } from '@/utils/css.classes';
 import { createStyles } from '@mantine/core';
+import { noSelect } from 'ui';
 
-const styles = createStyles((theme) => ({
+const styles = createStyles(theme => ({
   main: {
     display: 'grid',
     justifyContent: 'center',
@@ -14,7 +14,7 @@ const styles = createStyles((theme) => ({
     flexFlow: 'row wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    gap: '3rem'
+    gap: '3rem',
   },
   copyright: {
     ...noSelect,

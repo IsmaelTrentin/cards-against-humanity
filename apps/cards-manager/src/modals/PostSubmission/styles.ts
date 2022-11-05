@@ -1,5 +1,5 @@
 import { createStyles } from '@mantine/core';
-import { noSelect } from '@/utils/css.classes';
+import { noSelect } from 'ui';
 
 export const useStyles = createStyles(theme => ({
   columns: {

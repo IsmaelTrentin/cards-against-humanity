@@ -1,7 +1,7 @@
-import { noSelect } from '@/utils/css.classes';
 import { createStyles } from '@mantine/core';
+import { noSelect } from 'ui';
 
-const styles = createStyles((theme) => ({
+const styles = createStyles(theme => ({
   main: {
     ...noSelect,
     display: 'flex',
@@ -17,9 +17,9 @@ const styles = createStyles((theme) => ({
       backgroundColor: theme.colors.gray[0],
     },
     '&:active': {
-      transform: 'scale(0.98)'
+      transform: 'scale(0.98)',
     },
-  }
+  },
 }));
 
 export default styles;
