@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
+
 import { useMantineTheme } from '@mantine/core';
 
 interface Props {
@@ -7,6 +8,7 @@ interface Props {
   borderRadius?: string | number;
   backgroundColor?: string;
   fullWidth?: boolean;
+  style?: CSSProperties;
   className?: string;
   children?: React.ReactNode;
 }
@@ -19,6 +21,7 @@ export const Panel: React.FC<Props> = props => {
     borderRadius = 5,
     backgroundColor = theme.colors.gray[1],
     fullWidth,
+    style,
     className,
     children,
   } = props;
@@ -26,11 +29,12 @@ export const Panel: React.FC<Props> = props => {
   return (
     <div
       style={{
-        width: fullWidth ? '100%' : undefined,
         backgroundColor,
         padding,
         margin,
         borderRadius,
+        ...style,
+        width: fullWidth ? '100%' : undefined,
       }}
       className={className}
     >
