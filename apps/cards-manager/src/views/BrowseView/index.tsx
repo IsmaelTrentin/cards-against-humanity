@@ -1,13 +1,14 @@
+import { ArrowLeft, Search } from 'tabler-icons-react';
 import { Badge, Text, TextInput, useMantineTheme } from '@mantine/core';
 import React, { useState } from 'react';
 
 import { BrowserCardFilters } from 'shared-types';
 import { CardsViewer } from 'ui';
 import { Panel } from 'ui';
-import { Search } from 'tabler-icons-react';
 import { View } from 'ui';
 import { useDebouncedState } from '@mantine/hooks';
 import { useInfiniteCards } from '@/hooks/useInfiniteCards';
+import { useLocation } from 'wouter';
 import useStyles from './styles';
 
 interface Props {}
@@ -32,6 +33,7 @@ export const BrowseView: React.FC<Props> = () => {
       ? 0
       : 1;
   const cardsQuery = useInfiniteCards(queryText, cardType);
+  const [_, navigate] = useLocation();
 
   const toggleFilter = (name: keyof BrowserCardFilters) => {
     setActiveFilters(ps => {
@@ -48,6 +50,10 @@ export const BrowseView: React.FC<Props> = () => {
       }
       return cache;
     });
+  };
+
+  const handleGoBack = () => {
+    navigate('/');
   };
 
   return (
@@ -91,6 +97,17 @@ export const BrowseView: React.FC<Props> = () => {
         </div>
       </Panel>
       <CardsViewer query={cardsQuery} />
+      <div className={classes['go-back-wrapper']}>
+        <div
+          className={classes['go-back']}
+          onClick={handleGoBack}
+        >
+          <ArrowLeft
+            color={theme.colors.indigo[4]}
+            size={32}
+          />
+        </div>
+      </div>
     </View>
   );
 };
