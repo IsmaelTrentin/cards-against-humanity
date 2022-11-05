@@ -18,6 +18,7 @@ export const Submission: React.FC<Props> = props => {
           ...submission.card,
           _id: randomId,
         }}
+        animate={false}
       />
     </div>
   );

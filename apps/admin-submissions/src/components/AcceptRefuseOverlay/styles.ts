@@ -3,13 +3,13 @@ import { createStyles } from '@mantine/core';
 export const useStyles = createStyles((theme, _, getRef) => ({
   main: {
     position: 'relative',
-    overflow: 'hidden',
     [`
     &:hover .${getRef('options')}, 
     &:focus .${getRef('options')}, 
     &:focus-within .${getRef('options')}
     `]: {
       bottom: '1.5rem',
+      opacity: 1,
     },
   },
   options: {
@@ -21,8 +21,9 @@ export const useStyles = createStyles((theme, _, getRef) => ({
     position: 'absolute',
     left: 0,
     right: 0,
-    bottom: '-100%',
-    transition: 'all 220ms ease',
+    bottom: '-2.75rem',
+    opacity: 0,
+    transition: 'bottom 220ms ease, opacity 100ms ease',
   },
   'option-btn': {
     display: 'flex',

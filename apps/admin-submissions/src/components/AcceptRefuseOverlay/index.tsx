@@ -16,7 +16,7 @@ export const AcceptRefuseOverlay: React.FC<Props> = props => {
   const { classes } = useStyles();
 
   return (
-    <UnstyledButton className={classes.main}>
+    <div className={classes.main}>
       <>{children}</>
       <div className={classes.options}>
         <UnstyledButton
@@ -38,6 +38,6 @@ export const AcceptRefuseOverlay: React.FC<Props> = props => {
           />
         </UnstyledButton>
       </div>
-    </UnstyledButton>
+    </div>
   );
 };
