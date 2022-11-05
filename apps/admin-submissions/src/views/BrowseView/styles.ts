@@ -2,7 +2,6 @@ import { createStyles } from '@mantine/core';
 
 const styles = createStyles(() => ({
   'filters-wrapper': {
-    // ...noSelect,
     display: 'flex',
     flexFlow: 'row wrap',
     justifyContent: 'flex-start',
