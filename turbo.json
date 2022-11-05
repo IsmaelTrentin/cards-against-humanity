@@ -13,6 +13,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
+    "admin-submissions#build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**"]
+    },
     "lint": {
       "outputs": []
     },
