@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { BrowserCardFilters } from 'shared-types';
 import { Panel } from 'ui';
 import { Search } from 'tabler-icons-react';
+import { SubmissionsViewer } from '@/components/SubmissionsViewer';
 import { View } from 'ui';
 import { useDebouncedState } from '@mantine/hooks';
 import { useInfiniteSubmissions } from '@/hooks/useInfiniteSubmissions';
@@ -89,14 +90,7 @@ export const BrowseView: React.FC<Props> = () => {
           </Badge>
         </div>
       </Panel>
-      <Panel margin="1rem 0 0 0">
-        {submissionsQuery.data ? (
-          <pre>{JSON.stringify(submissionsQuery.data, null, 2)}</pre>
-        ) : (
-          <pre style={{ textAlign: 'center' }}>No data</pre>
-        )}
-      </Panel>
-      {/* <CardsViewer query={cardsQuery} /> */}
+      <SubmissionsViewer query={submissionsQuery} />
     </View>
   );
 };

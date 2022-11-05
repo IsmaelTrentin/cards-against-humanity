@@ -4,7 +4,9 @@ import { AxiosError } from 'axios';
 import { Submission } from 'shared-types';
 import { useMutation } from 'react-query';
 
+type Payload = Omit<Submission, '_id'>;
+
 export const usePostSubmission = () =>
-  useMutation<unknown, AxiosError<ApiResponseError>, Submission>(submission => {
+  useMutation<unknown, AxiosError<ApiResponseError>, Payload>(submission => {
     return Axios.post('/submissions', submission);
   });

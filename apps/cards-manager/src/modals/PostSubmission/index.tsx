@@ -17,7 +17,7 @@ import { PostSubmissionHeader } from './header';
 import { cardPostSchema } from '@/schemas/card';
 import { useForm } from '@mantine/form';
 import { usePostSubmission } from '@/hooks/usePostSubmission';
-import { useRandomCardId } from '@/hooks/useRandomCardId';
+import { useRandomCardId } from 'ui';
 import { useStyles } from './styles';
 
 interface Props extends ModalProps {}
