@@ -75,6 +75,7 @@ export const PostSubmissionModal: React.FC<Props> = props => {
       title={<Text size="xl">Post Card Submission</Text>}
       overlayOpacity={0.15}
       overlayBlur={2}
+      withCloseButton={false}
       centered
       size="auto"
     >
