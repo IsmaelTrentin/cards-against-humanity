@@ -27,7 +27,6 @@ export const SubmissionsViewer: React.FC<Props> = props => {
   } = query;
   const { ref, inView } = useInView();
 
-  // todo: fix <Card/> requires _id
   const qClient = useQueryClient();
   const { mutateAsync: mutateAccept } = useAcceptSubmission();
   const { mutateAsync: mutateRefuse } = useRefuseSubmission();

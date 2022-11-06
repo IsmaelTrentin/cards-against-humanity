@@ -3,7 +3,7 @@ import { Blank } from '../components/Blank';
 import { ReactNode } from 'react';
 import { Text } from '@mantine/core';
 
-export const useFormatCardText = (card: AbstractCard) => {
+export const useFormatCardText = (card: Omit<AbstractCard, '_id'>) => {
   const { text, blanks, isBlack } = card;
 
   // return unparsed text

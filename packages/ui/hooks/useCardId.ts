@@ -1,4 +1,10 @@
 export const useCardIdToReadable = (hexId: string) => {
+  if (hexId.length !== 24) {
+    console.warn(
+      `useCardIdToReadable: provided hexId is not 24 characters Object id [${hexId}]`
+    );
+    return undefined;
+  }
   const digits: string[] = [];
   let step = 0;
 

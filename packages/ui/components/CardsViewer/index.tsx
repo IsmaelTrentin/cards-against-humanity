@@ -49,7 +49,7 @@ export const CardsViewer: React.FC<Props> = props => {
               {page.data.map((card, j) => (
                 <Card
                   key={j}
-                  card={card}
+                  {...card}
                 />
               ))}
             </React.Fragment>

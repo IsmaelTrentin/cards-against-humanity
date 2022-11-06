@@ -17,8 +17,9 @@ import { PostSubmissionHeader } from './header';
 import { cardPostSchema } from '@/schemas/card';
 import { useForm } from '@mantine/form';
 import { usePostSubmission } from '@/hooks/usePostSubmission';
-import { useRandomCardId } from 'ui';
 import { useStyles } from './styles';
+
+type FormFields = Omit<AbstractCard, '_id'>;
 
 interface Props extends ModalProps {}
 
@@ -32,13 +33,11 @@ export const PostSubmissionModal: React.FC<Props> = props => {
   const { opened, onClose } = props;
   const { classes } = useStyles();
   const theme = useMantineTheme();
-  const randomCardId = useRandomCardId();
   const [blanksList, setBlanksList] = useState<SelectItem[]>([]);
   const { values, getInputProps, setFieldValue, setValues } =
-    useForm<AbstractCard>({
+    useForm<FormFields>({
       initialValues: {
         ...initialValues,
-        _id: randomCardId,
       },
     });
   const [isValid, setIsValid] = useState<boolean>(false);
@@ -47,7 +46,6 @@ export const PostSubmissionModal: React.FC<Props> = props => {
   const resetCard = () => {
     setValues({
       ...initialValues,
-      _id: randomCardId,
     });
   };
   const handleSubmit = () => {
@@ -108,7 +106,7 @@ export const PostSubmissionModal: React.FC<Props> = props => {
           )}
         </div>
         <div className={classes.right}>
-          <Card card={values} />
+          <Card {...values} />
           <Text
             className={classes.reset}
             onClick={resetCard}
